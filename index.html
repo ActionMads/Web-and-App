@@ -30,8 +30,8 @@
                     <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul> 
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
-                    <span class="fa fa-sign-in"></span> Login</a>
+                    <a id="signInBtn">
+                    <span class="fa fa-sign-in"></span>Login</a>
                 </span>
             </div>           
         </div>
@@ -39,54 +39,55 @@
     <div id="reservations" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
-                <h3 class="model-header bg-warning text-white">Reserve a Table <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </h3>
-                <br>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group row">
-                                <label for="numberOfQuests" class="col-2 col-form-label">Number of Quests</label>
-                                <div class="col-10">
-                                    <label class="radio-inline">1</label><input type="radio" class="radio-inline">
-                                    <label class="radio-inline">2</label><input type="radio" class="radio-inline">
-                                    <label class="radio-inline">3</label><input type="radio" class="radio-inline">
-                                    <label class="radio-inline">4</label><input type="radio" class="radio-inline">
-                                    <label class="radio-inline">5</label><input type="radio" class="radio-inline">
-                                    <label class="radio-inline">6</label><input type="radio" class="radio-inline">
-                                </div>
+                <div class="modal-header">
+                    <h3 class="modal-title">Reserve a Table</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="numberOfQuests" class="col-2 col-form-label">Number of Quests</label>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">1</label><input type="radio" class="form-check-input">
+                                <label class="form-check-label">2</label><input type="radio" class="form-check-input">
+                                <label class="form-check-label">3</label><input type="radio" class="form-check-input">
+                                <label class="form-check-label">4</label><input type="radio" class="form-check-input">
+                                <label class="form-check-label">5</label><input type="radio" class="form-check-input">
+                                <label class="form-check-label">6</label><input type="radio" class="form-check-input">
                             </div>
-                            <div class="form-group row">
-                                <div class="col-2">
-                                    <label class="form-label">Section</label>
-                                </div>
-                                <div class="col-6 btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-success active">
-                                        <input type="radio" value="Non-Smoking" checked autocomplete="off"> Non-smoking
-                                    </label>
-                                    <label class="btn btn-danger">
-                                        <input type="radio" value="Smoking" autocomplete="off"> Smoking
-                                    </label>
-                                </div>
-                              
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <label class="form-label">Section</label>
                             </div>
-                            <div class="form-group row">
-                                <label for="dateAndTime" class="col-2 col-form-label">Date and Time</label>
-                                <div class="col-5">
-                                    <input type="date" placeholder="Date" class="form-control">
-                                </div>
+                            <div class="col-6 btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-success active">
+                                    <input type="radio" value="Non-Smoking" checked autocomplete="off"> Non-smoking
+                                </label>
+                                <label class="btn btn-danger">
+                                    <input type="radio" value="Smoking" autocomplete="off"> Smoking
+                                </label>
+                            </div>
                                 
-                                <div class="col-5">
-                                        <input type="time" placeholder="Time" class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="dateAndTime" class="col-2 col-form-label">Date and Time</label>
+                            <div class="col-5">
+                                <input type="date" placeholder="Date" class="form-control">
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-10 offset-md-2">                                        
-                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Reserve</button>
-                                </div>
+                            
+                            <div class="col-5">
+                                    <input type="time" placeholder="Time" class="form-control">
                             </div>
-                        </form>  
-                    </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-10 offset-md-2">                                        
+                                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Reserve</button>
+                            </div>
+                        </div>
+                    </form>  
                 </div>
             </div>
         </div>
@@ -141,7 +142,7 @@
                 </div>
                 <div class="col-12 col-md-3 align-self-center">
                     <a role="button" class="btn btn-block nav-link btn-warning"
-                     data-toggle="modal" data-target="#reservations">Reserve a Table</a>
+                     id="reservations-btn" >Reserve a Table</a>
             </div>
         </div>
     </header>
@@ -326,20 +327,7 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script>
-        $("#carouselButton").click(function(){
-            if ($("#carouselButton").children("span").hasClass('fa-pause')) {
-                $("#mycarousel").carousel('pause');
-                $("#carouselButton").children("span").removeClass('fa-pause');
-                $("#carouselButton").children("span").addClass('fa-play');
-            }
-            else if ($("#carouselButton").children("span").hasClass('fa-play')){
-                $("#mycarousel").carousel('cycle');
-                $("#carouselButton").children("span").removeClass('fa-play');
-                $("#carouselButton").children("span").addClass('fa-pause');                    
-            }
-        });
-    </script>
+    <script src="js/scripts.js"></script>
 
 </body>
 
